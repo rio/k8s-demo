@@ -1,0 +1,19 @@
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: k8s-demo
+
+ports:
+  # expose the ingress controller on port 80 and 443
+  - port: 80:80
+    nodeFilters:
+    - "loadbalancer"
+  - port: 443:443
+    nodeFilters:
+    - "loadbalancer"
+  
+  # expose the vnc port for some fun
+  - port: 5900:5900
+    nodeFilters:
+    - "loadbalancer"
+
